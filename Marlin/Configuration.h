@@ -28,7 +28,7 @@
 
 ***********************************************************************/
 
-#define PRINTER_NAME "TEVO Tarantula (EasyConfig)"  // Change this to whatever you wish, or leave it as it is.
+#define PRINTER_NAME "TEVO Tarantula"  // Change this to whatever you wish, or leave it as it is.
                                                     // NOTE: Whatever you put here will have " Ready..." appended to it.
 
 /**
@@ -55,7 +55,7 @@
  * (How to center prints: https://github.com/JimBrown/MarlinTarantula/wiki/How-to-center-your-prints-(EasyConfig))
  */
 #define NOZZLE_X          0
-#define NOZZLE_Y          0
+#define NOZZLE_Y          7
 
 /**
  * Minimal Z height (in mm) before homing (G28) for Z clearance above the bed, clamps, ...
@@ -80,7 +80,7 @@
  * If a Z-Probe type is selected, a Bed Leveling type other than MANUAL must be selected.
  */
 //#define BLTOUCH         // ANTClabs BLTouch sensor (might also work with clones)
-//#define SN04          // Green sensor
+#define SN04          // Green sensor
 //#define INDUCTIVE_NO  // Normally open inductive sensor
 //#define INDUCTIVE_NC  // Normally closed inductive sensor
 //#define SERVO_PROBE   // Endstop switch on rotating arm. Set servo angles!
@@ -91,10 +91,10 @@
  * Must choose one of these other than MANUAL if a Z-Probe type is selected.
  */
 //#define TRIPOINT
-//#define LINEAR
+#define LINEAR
 //#define BILINEAR
 //#define UBL
-#define MANUAL
+//#define MANUAL
 
 /**
  * Z-Probe offset from nozzle (https://github.com/JimBrown/MarlinTarantula/wiki/How-to-determine-your-Z-Probe-offset)
@@ -102,8 +102,8 @@
  * If you have a dual nozzle the offsets are calculated from the primary nozzle (the one plugged in to E0)
  */
 #define SENSOR_LEFT        0
-#define SENSOR_RIGHT       0
-#define SENSOR_FRONT       0
+#define SENSOR_RIGHT       40
+#define SENSOR_FRONT       58
 #define SENSOR_BEHIND      0
 
 /**
@@ -184,8 +184,8 @@
  *       CUSTOM_USER_MENUS for PETG to appear, along with PLA and ABS, under Custom Commands.
  *       PLA and ABS will appear under both Custom Command and Prepare.
  */
-#define Hot_PLA     215
-#define Bed_PLA      75
+#define Hot_PLA     200
+#define Bed_PLA      60
 
 #define Hot_ABS 		240
 #define Bed_ABS 		100
@@ -1219,10 +1219,10 @@
  * For other boards you may need to define FIL_RUNOUT_PIN, FIL_RUNOUT2_PIN, etc.
  * By default the firmware assumes HIGH=FILAMENT PRESENT.
  */
-//#define FILAMENT_RUNOUT_SENSOR
+#define FILAMENT_RUNOUT_SENSOR
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)
-  #define NUM_RUNOUT_SENSORS   1     // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
-  #define FIL_RUNOUT_INVERTING false // set to true to invert the logic of the sensor.
+  //#define NUM_RUNOUT_SENSORS   19     // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
+  #define FIL_RUNOUT_INVERTING true // set to true to invert the logic of the sensor.
   #define FIL_RUNOUT_PULLUP          // Use internal pullup for filament runout pins.
   #define FILAMENT_RUNOUT_SCRIPT "M600"
 #endif
@@ -1478,12 +1478,12 @@
 // - Prevent Z homing when the Z probe is outside bed area.
 //
 #if ENABLED(BLTOUCH) || ENABLED(SN04) || ENABLED(INDUCTIVE_NC) || ENABLED(INDUCTIVE_NO) || ENABLED(SERVO_PROBE)
-  #define Z_SAFE_HOMING
+  //#define Z_SAFE_HOMING
 #endif
 
 #if ENABLED(Z_SAFE_HOMING)
-  #define Z_SAFE_HOMING_X_POINT ((X_BED_SIZE) / 2)    // X point for Z homing when homing all axes (G28).
-  #define Z_SAFE_HOMING_Y_POINT ((Y_BED_SIZE) / 2)    // Y point for Z homing when homing all axes (G28).
+  #define Z_SAFE_HOMING_X_POINT 1    // X point for Z homing when homing all axes (G28).
+  #define Z_SAFE_HOMING_Y_POINT 58    // Y point for Z homing when homing all axes (G28).
 #endif
 
 // Homing speeds (mm/m)
